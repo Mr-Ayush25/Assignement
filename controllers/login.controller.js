@@ -13,9 +13,13 @@ const handleLogin = asyncHandler(async (req, res) => {
         return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    user.lastLogin = new Date();
+    await user.save();
+
     const token = generateToken(user);
     res.json(successResponse({ token }));
 });
+
 
 const handleRegister = asyncHandler(async (req, res) => {
     const { username, password, email, phone, name = "" } = req.body;
