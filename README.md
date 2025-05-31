@@ -46,7 +46,7 @@ dummy-jira/
 ### 1⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/dummy-jira.git
+git clone https://github.com/Mr-Ayush25/Assignement
 cd dummy-jira
 ```
 
