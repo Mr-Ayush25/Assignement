@@ -117,9 +117,6 @@ npm run dev
 ## ✨ Future Enhancements
 
 - ✅ JWT-based Authentication
-- 🔐 Role-based access control (Admin/User)
-- 📊 Analytics dashboard
-- 📨 Email notifications for task assignments
 
 ---
 
