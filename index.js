@@ -1,9 +1,9 @@
 import express from "express";
-import config from "./config/index.js";
+import { config } from "./config/index.js";
 import cors from "cors";
 
 import { routes } from "./routes/index.js";
-import { connectToMongo } from "./db/connectToMongo.js";
+import { pgClient } from "./db/db.js";
 
 // Server initialization
 const app = express();
@@ -36,13 +36,15 @@ app.use((req, res) => {
 });
 
 // Database Connection and server initailization
-connectToMongo()
-    .then(() => {
+pgClient
+    .connect()
+    .then(async () => {
+        console.log("PG DB Connected");
         app.listen(config.EXPRESS_PORT, () => {
             console.log(`Listening on http://localhost:${config.EXPRESS_PORT}`);
         });
     })
-    .catch((error) => {
-        console.log("Connection Failed", error);
+    .catch((err) => {
+        console.log("Error in PG Connect", err);
         return process.exit(1);
     });
